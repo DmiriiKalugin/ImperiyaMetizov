@@ -1,4 +1,7 @@
 package ru.dkalugin.ImperiyaMetizov.repositories;
 
-public interface ProductRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import ru.dkalugin.ImperiyaMetizov.entities.Product;
+
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }

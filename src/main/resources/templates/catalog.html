@@ -26,9 +26,27 @@
     <script src="js/custom.js"></script>
 </head>
 <div th:replace="~{header_top_section :: header_top_section}"></div>
-<div th:replace="~{navigation :: navigation(About)}"></div>
-<div th:replace="~{banner :: banner}"></div>
-<div th:replace="~{development :: development}"></div>
+<div th:replace="~{navigation :: navigation(Catalog)}"></div>
+<!--<div th:replace="~{development :: development}"></div>-->
+<div class="container">
+
+    <div th:replace="~{catalog_modules :: catalog_modules}"></div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>Наименование</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product: ${product}">
+            <td th:text="${product.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
 <div th:replace="~{footer :: footer}"></div>
 
 
