@@ -1267,7 +1267,7 @@ a.carousel-control.right > span{
 .contact-form .input-group input.form-control, .contact-form .input-group textarea.form-control{
     width: 100%;
     display: block;
-    background: transparent;
+    background: #ffffffab;
     border: 1px solid #fff;
     height: 50px;
 }
