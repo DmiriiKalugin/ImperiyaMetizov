@@ -3,39 +3,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Империя метизов Екатеринбург</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/favicon.png">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-    <![endif]-->
-
-    <!-- JQUERY -->
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom.js"></script>
+    <div th:replace="~{head_modules::head}"></div>
 </head>
 <div th:replace="~{header_top_section :: header_top_section}"></div>
-<div th:replace="~{navigation :: navigation(Payment)}"></div>
-<div th:replace="~{banner :: banner}"></div>
+<div th:replace="~{navigation_modules :: navigation(Payment)}"></div>
+<div th:replace="~{banner_modules :: banner}"></div>
 <section class="new-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <span>
-                       <h1> Заказать необходимую Вам продукцию в ООО "Империя" можно несколькими способами:<br></h1>
+                       <h1> Заказать необходимую Вам продукцию в ООО "Лучи" можно несколькими способами:<br></h1>
 
-                            <H2>1. Отправить отправить заявку на электронную почту imperiya-metizov@yandex.ru<br></H2>
+                            <H2>1. Отправить заявку на электронную почту imperiya-metizov@yandex.ru<br></H2>
 
                             <h2>2. Сделав заказ на данном сайте.<br></h2>
 
@@ -55,9 +35,7 @@
 
 
 
-<div th:replace="~{footer :: footer}"></div>
+<div th:replace="~{footer_modules :: footer}"></div>
+<div th:replace="~{js_modules :: js}"/>
 
-
-<h1>order_payment
-</h1>
 </html>

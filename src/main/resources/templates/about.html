@@ -3,33 +3,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Империя метизов Екатеринбург</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/favicon.png">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-    <![endif]-->
-
-    <!-- JQUERY -->
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom.js"></script>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
 </head>
 <div th:replace="~{header_top_section :: header_top_section}"></div>
-<div th:replace="~{navigation :: navigation(About)}"></div>
-<div th:replace="~{banner :: banner}"></div>
-<div th:replace="~{development :: development}"></div>
-<div th:replace="~{footer :: footer}"></div>
+<div th:replace="~{navigation_modules :: navigation(About)}"></div>
+<div th:replace="~{banner_modules :: banner}"></div>
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span>
+                       <h1> ООО «Лучи» является динамично развивающейся производственно-торговой компанией по продаже широкого ассортимента крепёжной продукции. <br></h1>
+                       <h1> Успешно ведём свою деятельность на рынке РФ и стран СНГ с 2015 года. <br></h1>
+                       <h1> Наша команда состоит из квалифицированных специалистов на разных уровнях, которые имеют большой опыт как в продажах, так и в производстве.<br></h1>
+                       <h1>ООО «Лучи» - надежный партнёр для Вашего бизнеса.</h1>
+
+                </span>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{footer_modules :: footer}"></div>
 
 
 </html>

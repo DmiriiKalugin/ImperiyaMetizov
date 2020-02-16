@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="footer">
+        <section class="contact-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="titie-section wow fadeInDown animated ">
+                            <h1>КОНТАКТЫ</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 wow fadeInLeft animated">
+                        <div class="left-content">
+                            <h1>Империя Метизов</h1>
+                            <h3>ООО «Лучи» - надежный партнёр для Вашего бизнеса.</h3>
+                            <div class="contact-info">
+                                <h1>
+                                    <p><b>Адрес: </b> Свердловская область, г. Екатеринбург, ул. Бажова, д. 68</p>
+                                    <p><b>Телефон: </b> 8-932-601-5-888</p>
+                                    <p><b>Email: </b> imperiya-metizob@yandex.ru</p>
+                                </h1>
+                            </div>
+<!--                            <div class="social-media">-->
+<!--                                <ul>-->
+<!--                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+<!--                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+<!--                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+<!--                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+<!--                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight animated">
+                        <form  th:action="@{/footer}" th:object="${greeting}" method="post" class="contact-form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" th:field="*{number}" placeholder="Ваш номер">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="submit" class="contact-submit" value="Отправить" />
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="center">© 2015 "Лучи" Копирование информации сайта разрешено только с письменного согласия администрации <a th:href="@{/privacy-policy}" target="_blank">Политика конфиденциальности</a>. </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</html>

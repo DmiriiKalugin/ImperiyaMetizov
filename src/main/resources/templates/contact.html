@@ -3,35 +3,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Империя метизов Екатеринбург</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/favicon.png">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-    <![endif]-->
-
-    <!-- JQUERY -->
-    <script src="js/vendor/jquery-1.11.2.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script src="js/custom.js"></script>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
 </head>
 <div th:replace="~{header_top_section :: header_top_section}"></div>
-<div th:replace="~{navigation :: navigation(Contact)}"></div>
-<div th:replace="~{banner :: banner}"></div>
-<div th:replace="~{development :: development}"></div>
-<div th:replace="~{footer :: footer}"></div>
+<div th:replace="~{navigation_modules :: navigation(Contact)}"></div>
+<div th:replace="~{banner_modules :: banner}"></div>
 
 
-<h1>contact</h1>
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="contact-info">
+                <h1>
+                    <p><b>Адрес: </b> Свердловская область, г. Екатеринбург, ул. Бажова, д. 68</p>
+                    <p><b>Телефон: </b> 8-932-601-5-888</p>
+                    <p><b>Email: </b> imperiya-metizob@yandex.ru</p>
+                </h1>
+            </div>
+
+            <br>
+            <div class="col-md-12">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A6d6bb7cf52c89d372fa271cf9fec4f8cfb2b10db45fe0c652717caada0911ddc&amp;width=100%25&amp;height=720&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="~{footer_modules :: footer}"></div>
 
 </html>

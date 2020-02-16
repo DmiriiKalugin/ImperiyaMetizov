@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="RU">
+<head>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
+</head>
+<div th:replace="~{header_top_section :: header_top_section}"></div>
+<div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
+<!--<div th:replace="~{development :: development}"></div>-->
+<div class="container">
+
+    <div th:replace="~{catalog_modules :: catalog_modules}"></div>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <td>Наименование</td>
+                <td>Category_id</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="subcategory: ${subcategory}">
+                <td th:text="${subcategory.name}"></td>
+                <td th:text="${subcategory.category_id}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+</div>
+
+<div th:replace="~{footer_modules :: footer}"></div>
+
+
+</html>

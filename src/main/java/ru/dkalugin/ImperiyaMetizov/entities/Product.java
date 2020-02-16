@@ -5,36 +5,25 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product")
 public class Product {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    private int id;
 
-    @Column(name = "image")
     private String image;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
-    private int price;
+    private String price;
 
-    @Column(name = "unit")
-    private String unit;
+    private int subcategory_id;
 
-    @Column(name = "category_id")
-    private int category_id;
-
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -62,41 +51,37 @@ public class Product {
         this.description = description;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public String getUnit() {
-        return unit;
+    public int getSubcategory_id() {
+        return subcategory_id;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setSubcategory_id(int subcategory_id) {
+        this.subcategory_id = subcategory_id;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public Product() {
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
-    }
-
-    public Product(){
-
-    }
-
-    public Product(String image, String name, String description, int price, String unit, int category_id) {
-        this.image = image;
+    public Product(String name) {
         this.name = name;
-        this.description = description;
+    }
+
+    public Product(int subcategory_id) {
+        this.subcategory_id = subcategory_id;
+    }
+
+    public Product(String name, String price, int subcategory_id) {
+        this.name = name;
         this.price = price;
-        this.unit = unit;
-        this.category_id = category_id;
+        this.subcategory_id = subcategory_id;
     }
 
 

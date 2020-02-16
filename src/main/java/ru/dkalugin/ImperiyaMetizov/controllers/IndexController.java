@@ -5,38 +5,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.dkalugin.ImperiyaMetizov.entities.FormFooter;
+import ru.dkalugin.ImperiyaMetizov.entities.Category;
+import ru.dkalugin.ImperiyaMetizov.services.CategoryServices;
+import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
 import ru.dkalugin.ImperiyaMetizov.entities.Product;
 import ru.dkalugin.ImperiyaMetizov.services.ProductServices;
-import ru.dkalugin.ImperiyaMetizov.services.Sendler;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 @Controller
 public class IndexController {
-    private Sendler sendler = new Sendler();
-    private ProductServices productService;
+    private CategoryServices categoryServices;
 
     @Autowired
-    public void setProductService(ProductServices productService) {
-        this.productService = productService;
+    public void setCategoryServices(CategoryServices categoryServices) {
+        this.categoryServices = categoryServices;
     }
 
 
 
     @GetMapping("/")
     public String index(Model model) {
-        List<Product> allProduct = productService.getAllProducts();
-        model.addAttribute("product", allProduct);
+        List<Category> allCategory = categoryServices.getAllCategory();
+
+        model.addAttribute("category", allCategory);
         model.addAttribute("greeting", new FormFooter());
         return "index";
     }
 
-    @PostMapping("/")
-    public String index(@ModelAttribute FormFooter formFooter, Model model) throws MessagingException {
-        model.addAttribute("greeting", formFooter);
-        sendler.send(formFooter.getName(), formFooter.getNumber(), formFooter.getContent());
-        return "index";
-    }
+
 }
