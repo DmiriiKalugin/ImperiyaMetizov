@@ -9,24 +9,42 @@
 <div th:replace="~{header_top_section :: header_top_section}"></div>
 <div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
 <!--<div th:replace="~{development :: development}"></div>-->
-<div class="container">
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titie-section wow fadeInDown animated ">
+                    <h1>КАТАЛОГ ПРОДУКЦИИ</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <ul class="breadcrumbs" >
+                <li><a th:href="@{/}">Главная</a></li>
+                <li>Каталог</li>
+            </ul>
+            <br>
+        </div>
+        <div class="row">
+            <div th:replace="~{catalog_modules :: catalog_modules}"></div>
+        </div>
 
-    <div th:replace="~{catalog_modules :: catalog_modules}"></div>
+    <!--    <table class="table table-hover">-->
+    <!--        <thead class="thead-dark">-->
+    <!--        <tr>-->
+    <!--            <td>Наименование</td>-->
+    <!--        </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody>-->
+    <!--        <tr th:each="category: ${category}">-->
+    <!--            <td th:text="${category.name}"></td>-->
+    <!--        </tr>-->
+    <!--        </tbody>-->
+    <!--    </table>-->
 
-<!--    <table class="table table-hover">-->
-<!--        <thead class="thead-dark">-->
-<!--        <tr>-->
-<!--            <td>Наименование</td>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr th:each="category: ${category}">-->
-<!--            <td th:text="${category.name}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-
-</div>
+    </div>
+</section>
 
 <div th:replace="~{footer_modules :: footer}"></div>
 

@@ -9,27 +9,59 @@
 <div th:replace="~{header_top_section :: header_top_section}"></div>
 <div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
 <!--<div th:replace="~{development :: development}"></div>-->
-<div class="container">
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titie-section wow fadeInDown animated ">
+                    <h1>КАТАЛОГ ПРОДУКЦИИ</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <ul class="breadcrumbs"  th:each="category: ${category}"  >
+                <li><a th:href="@{/}">Главная</a></li>
+                <li><a th:href="@{/catalog}">Каталог</a></li>
+                <li  th:text="${category.name}"></li>
+            </ul>
+            <br>
+        </div>
+        <div class="row featured isotope" >
+            <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item" th:each="category: ${category}">
+                <div class="product-item" >
+                    <img src="../images/1.png" class="img-responsive" width="255" height="322" alt="">
 
-    <div th:replace="~{catalog_modules :: catalog_modules}"></div>
 
-        <table class="table table-hover">
-            <thead class="thead-dark">
-            <tr>
-                <td>Наименование</td>
-                <td>Category_id</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="subcategory: ${subcategory}">
-                <td th:text="${subcategory.name}"></td>
-                <td th:text="${subcategory.category_id}"></td>
-            </tr>
-            </tbody>
-        </table>
+                    <div class="product-hover">
+                        <div class="product-meta"></div>
+                    </div>
+                    <div class="product-title" th:each="subcategory: ${subcategory}">
+                        <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'}+ ${subcategory.category_id}" >
+                            <h3 th:text="${subcategory.name}"></h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</div>
+<!--        <table class="table table-hover">-->
+<!--            <thead class="thead-dark">-->
+<!--            <tr>-->
+<!--                <td>Наименование</td>-->
+<!--                <td>Category_id</td>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="subcategory: ${subcategory}">-->
+<!--                <td ><a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'}+ ${subcategory.category_id}" th:text="${subcategory.name}"></a></td>-->
+<!--                <td th:text="${subcategory.category_id}"></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
 
+</section>
 <div th:replace="~{footer_modules :: footer}"></div>
 
 

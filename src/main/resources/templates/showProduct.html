@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="RU">
+<head>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
+</head>
+<div th:replace="~{header_top_section :: header_top_section}"></div>
+<div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
+<!--<div th:replace="~{development :: development}"></div>-->
+<div class="container">
+
+    <div th:replace="~{catalog_modules :: catalog_modules}"></div>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <td>Наименование</td>
+                <td>Цена</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${product}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+<!--    <div class="col-md-3 col-sm-6 col-xs-12 cat-2 featured-items isotope-item" th:each="product: ${product}">-->
+<!--        <div class="product-item">-->
+<!--            <img src="../images/product2.png" class="img-responsive" width="255" height="322" alt="">-->
+<!--            <div class="sell-meta">-->
+<!--                <a th:href="@{'/showSubcategory/'} + ${category.id}" class="new-item">New</a>-->
+<!--            </div>-->
+<!--            <div class="product-hover">-->
+<!--                <div class="product-meta">-->
+<!--                    <a href="#"><i class="pe-7s-like"></i></a>-->
+<!--                    <a href="#"><i class="pe-7s-shuffle"></i></a>-->
+<!--                    <a href="#"><i class="pe-7s-clock"></i></a>-->
+<!--                    <a href="#"><i class="pe-7s-cart"></i>Добавить в корзину</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="product-title">-->
+<!--                <a href="#">-->
+<!--                    <h3>Cool lingerie</h3>-->
+<!--                    <span>$21</span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+</div>
+
+<div th:replace="~{footer_modules :: footer}"></div>
+
+
+</html>

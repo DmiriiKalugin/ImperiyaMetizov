@@ -1,14 +1,7 @@
     <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="catalog_modules">
-    <section class="new-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="titie-section wow fadeInDown animated ">
-                        <h1>КАТАЛОГ ПРОДУКЦИИ</h1>
-                    </div>
-                </div>
-            </div>
+
+
 <!--            <div class="row">-->
 <!--                <div class="col-md-12">-->
 <!--                    <div class="filter-menu">-->
@@ -22,21 +15,21 @@
 <!--                </div>-->
 <!--            </div>-->
 
-          <div class="row featured isotope" >
-                <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item" th:each="category: ${category}">
-                    <div class="product-item" >
-                        <img th:src="${category.img}" class="img-responsive" width="255" height="322" alt="">
+      <div class="row featured isotope" >
+            <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item" th:each="category: ${category}">
+                <div class="product-item" >
+                    <img th:src="${category.img}" class="img-responsive" width="255" height="322" alt="">
 
 
-                        <div class="product-hover">
-                            <div class="product-meta">
-                            </div>
-                        </div>
-                        <div class="product-title">
-                            <a th:href="@{'/showSubcategory/'} + ${category.id}"><h3 th:text="${category.name}"></h3></a>
+                    <div class="product-hover">
+                        <div class="product-meta">
                         </div>
                     </div>
+                    <div class="product-title">
+                        <a th:href="@{'/showSubcategory/'} + ${category.id}"><h3 th:text="${category.name}"></h3></a>
+                    </div>
                 </div>
+            </div>
 <!--                <div class="col-md-3 col-sm-6 col-xs-12 cat-2 featured-items isotope-item">-->
 <!--                    <div class="product-item">-->
 <!--                        <img src="images/product2.png" class="img-responsive" width="255" height="322" alt="">-->
@@ -60,14 +53,10 @@
 <!--                    </div>-->
 <!--                </div>-->
 
-                </div>
-        </div>
-     </section>
+            </div>
     </div>
-
-
-        </div>
-    </html>
+</div>
+</html>
 
 
 

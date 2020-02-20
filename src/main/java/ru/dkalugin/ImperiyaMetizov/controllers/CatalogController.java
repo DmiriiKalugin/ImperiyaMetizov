@@ -44,10 +44,35 @@ public class CatalogController {
         return "catalog";
     }
 
+    @GetMapping("/subcategory")
+    public String Subcategory(Model model){
+        model.addAttribute("subcategory", subcategoryServices.getSubcategory());
+        model.addAttribute("greeting", new FormFooter());
+        return "subcategory";
+    }
+
     @GetMapping("/showSubcategory/{id}")
     public String showSubcategory(Model model, @PathVariable("id") long id){
+        model.addAttribute("category", categoryServices.getCategoryId(id));
         model.addAttribute("subcategory", subcategoryServices.findByCategoryId(id));
+        model.addAttribute("subcategory_one", subcategoryServices.getCategory_id(id));
         model.addAttribute("greeting", new FormFooter());
         return "showSubcategory";
+    }
+
+    @GetMapping("/product/{id}/{category_id}")
+    public String Product(Model model, @PathVariable("id") long id, @PathVariable("category_id") long category_id){
+        model.addAttribute("category", categoryServices.getCategoryId(category_id));
+        model.addAttribute("subcategory", subcategoryServices.getCategory_id(id));
+        model.addAttribute("product", productService.getAllBySubcategoryId(id));
+        model.addAttribute("greeting", new FormFooter());
+        return "product";
+    }
+
+    @GetMapping("/showProduct/{id}")
+    public String showProduct(Model model, @PathVariable("id") long id){
+        model.addAttribute("product", productService.getProductById(id));
+        model.addAttribute("greeting", new FormFooter());
+        return "showProduct";
     }
 }

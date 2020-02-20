@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     private String image;
 
@@ -17,13 +17,13 @@ public class Product {
 
     private String price;
 
-    private int subcategory_id;
+    private long subcategory_id;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -59,11 +59,11 @@ public class Product {
         this.price = price;
     }
 
-    public int getSubcategory_id() {
+    public long getSubcategory_id() {
         return subcategory_id;
     }
 
-    public void setSubcategory_id(int subcategory_id) {
+    public void setSubcategory_id(long subcategory_id) {
         this.subcategory_id = subcategory_id;
     }
 
@@ -74,11 +74,11 @@ public class Product {
         this.name = name;
     }
 
-    public Product(int subcategory_id) {
+    public Product(long subcategory_id) {
         this.subcategory_id = subcategory_id;
     }
 
-    public Product(String name, String price, int subcategory_id) {
+    public Product(String name, String price, long subcategory_id) {
         this.name = name;
         this.price = price;
         this.subcategory_id = subcategory_id;

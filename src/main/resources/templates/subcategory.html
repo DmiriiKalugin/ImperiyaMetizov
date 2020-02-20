@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="RU">
+<head>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
+</head>
+<div th:replace="~{header_top_section :: header_top_section}"></div>
+<div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
+<!--<div th:replace="~{development :: development}"></div>-->
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titie-section wow fadeInDown animated ">
+                    <h1>КАТАЛОГ ПРОДУКЦИИ</h1>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <td>Наименование</td>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="subcategory: ${subcategory}">
+                <td ><a th:href="@{'/product/'} + ${subcategory.id}" th:text="${subcategory.name}"></a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</section>
+
+<div th:replace="~{footer_modules :: footer}"></div>
+
+
+</html>

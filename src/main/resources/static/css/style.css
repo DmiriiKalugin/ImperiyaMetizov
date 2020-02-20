@@ -1545,4 +1545,23 @@ footer.footer p a{
         top: 7%;
         z-index: 999;
     }
+
+
 }
+  /* BreadCrumbs */
+.breadcrumbs {
+    margin: 0; padding: 0; /* Убираем отступы */
+   }
+   .breadcrumbs li {
+    display: inline-block; /* Выстраиваем по горизонтали */
+   }
+   .breadcrumbs li::before {
+    content: '/'; /* Разделитель */
+    margin-left: 5px; /* Отступ слева */
+    margin-right: 5px; /* Отступ справа */
+    color: #7f7f7f; /* Цвет разделителя */
+   }
+   .breadcrumbs li:first-child::before {
+    content: ''; /* Убираем разделитель для первого пункта */
+   }
+    /* EndBreadCrumbs */
