@@ -744,7 +744,7 @@ a.carousel-control.right > span{
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 10px;
     float: left;
     padding: 10px;
     padding-left: 15px;
@@ -1565,3 +1565,13 @@ footer.footer p a{
     content: ''; /* Убираем разделитель для первого пункта */
    }
     /* EndBreadCrumbs */
+
+
+    /* Tables Product */
+    .input-count-product{
+        margin-right: 30px;
+        width: 30px;
+        text-align: center;
+        color: #000 !important;
+    }
+    /* End Tables Product */

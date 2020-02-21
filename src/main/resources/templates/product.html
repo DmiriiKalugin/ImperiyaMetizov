@@ -30,25 +30,60 @@
             </ul>
             <br>
         </div>
-        <div class="col-md-3 col-sm-6 col-xs-12 cat-2 featured-items isotope-item" th:each="product: ${product}">
-            <div class="product-item">
-                <img src="../../images/1.png" class="img-responsive" width="255" height="322" alt="">
-                <div class="product-hover">
-                    <div class="product-meta">
-    <!--                    <a href="#"><i class="pe-7s-like"></i></a>-->
-    <!--                    <a href="#"><i class="pe-7s-shuffle"></i></a>-->
-                        <a href="#"><i class="pe-7s-cart" th:text="${product.price}"></i></a>
-                        <a href="#"><i class="pe-7s-cart"></i>Добавить в корзину</a>
-                    </div>
-                </div>
-                <div class="product-title">
-                    <a th:href="@{'/showProduct/'} + ${product.id}">
-                        <h3 th:text="${product.name}"></h3>
-    <!--                    <span th:text="${product.price}"></span>-->
-                    </a>
-                </div>
-            </div>
-        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>&nbsp;</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${product}">
+                <td>
+                    <a th:href="@{'/showProduct/'} + ${product.id}" title="Подробное описание товара" th:text="${product.name}"></a>
+                </td>
+                <td>
+                    <span th:text="${product.price}"></span>
+                </td>
+
+                <td>
+                    <span>
+                        <span>
+                            <span >Кол-во</span>
+                            <input class="input-count-product" type="text" value="1">
+                        </span>
+                    </span>
+                </td>
+
+                <td>
+                    <a href="#">В корзину</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+            <!--        <div class="col-md-3 col-sm-6 col-xs-12 cat-2 featured-items isotope-item" th:each="product: ${product}">-->
+<!--            <div class="product-item">-->
+<!--                <img th:src="${product.image}" class="img-responsive" width="255" height="322" alt="">-->
+<!--                <div class="product-hover">-->
+<!--                    <div class="product-meta">-->
+<!--    &lt;!&ndash;                    <a href="#"><i class="pe-7s-like"></i></a>&ndash;&gt;-->
+<!--    &lt;!&ndash;                    <a href="#"><i class="pe-7s-shuffle"></i></a>&ndash;&gt;-->
+<!--                        <a href="#"><i class="pe-7s-cart" th:text="${product.price}"></i></a>-->
+<!--                        <a href="#"><i class="pe-7s-cart"></i>Добавить в корзину</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="product-title">-->
+<!--                    <a th:href="@{'/showProduct/'} + ${product.id}">-->
+<!--                        <h3 th:text="${product.name}"></h3>-->
+<!--    &lt;!&ndash;                    <span th:text="${product.price}"></span>&ndash;&gt;-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </section>
 
