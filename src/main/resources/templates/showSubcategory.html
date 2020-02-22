@@ -29,8 +29,8 @@
         <div class="row featured isotope" >
             <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item"th:each="subcategory: ${subcategory}">
                 <div class="product-item" >
-                    <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'}+ ${subcategory.category_id}" >
-                        <img th:src="${subcategory.img}" class="img-responsive" width="255" height="322" alt="">
+                    <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'} + ${subcategory.category_id} ">
+                        <img th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="200" height="200" alt="">
                         <div class="product-title">
                             <h3 th:text="${subcategory.name}"></h3>
                         </div>

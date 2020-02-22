@@ -69,9 +69,11 @@ public class CatalogController {
         return "product";
     }
 
-    @GetMapping("/showProduct/{id}")
-    public String showProduct(Model model, @PathVariable("id") long id){
+    @GetMapping("/showProduct/{id}/{subcategory_id}/{category_id}")
+    public String showProduct(Model model, @PathVariable("id") long id, @PathVariable("subcategory_id") long subcategory_id, @PathVariable("category_id") long category_id){
         model.addAttribute("product", productService.getProductById(id));
+        model.addAttribute("category", categoryServices.getCategoryId(category_id));
+        model.addAttribute("subcategory", subcategoryServices.getCategory_id(subcategory_id));
         model.addAttribute("greeting", new FormFooter());
         return "showProduct";
     }

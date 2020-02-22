@@ -11,12 +11,11 @@
 <div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
 
 <section class="new-section">
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="titie-section wow fadeInDown animated" th:each="category: ${category}">
-                    <h1 th:text="${category.name}"></h1>
+                <div class="titie-section wow fadeInDown animated" th:each="subcategory: ${subcategory}">
+                    <h1 th:text="${subcategory.name}"></h1>
                 </div>
             </div>
         </div>
@@ -42,12 +41,14 @@
             <tbody>
             <tr th:each="product: ${product}">
                 <td>
-                    <a th:href="@{'/showProduct/'} + ${product.id}" title="Подробное описание товара" th:text="${product.name}"></a>
+                    <a th:each="category: ${category}" th:href="@{'/showProduct/'} + ${product.id} + @{/} + ${product.subcategory_id} + @{'/'}
+                    + ${category.id}" title="Подробное описание товара" th:text="${product.name}">
+
+                    </a>
                 </td>
                 <td>
                     <span th:text="${product.price}"></span>
                 </td>
-
                 <td>
                     <span>
                         <span>
@@ -56,34 +57,12 @@
                         </span>
                     </span>
                 </td>
-
                 <td>
                     <a href="#">В корзину</a>
                 </td>
             </tr>
             </tbody>
         </table>
-
-
-            <!--        <div class="col-md-3 col-sm-6 col-xs-12 cat-2 featured-items isotope-item" th:each="product: ${product}">-->
-<!--            <div class="product-item">-->
-<!--                <img th:src="${product.image}" class="img-responsive" width="255" height="322" alt="">-->
-<!--                <div class="product-hover">-->
-<!--                    <div class="product-meta">-->
-<!--    &lt;!&ndash;                    <a href="#"><i class="pe-7s-like"></i></a>&ndash;&gt;-->
-<!--    &lt;!&ndash;                    <a href="#"><i class="pe-7s-shuffle"></i></a>&ndash;&gt;-->
-<!--                        <a href="#"><i class="pe-7s-cart" th:text="${product.price}"></i></a>-->
-<!--                        <a href="#"><i class="pe-7s-cart"></i>Добавить в корзину</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="product-title">-->
-<!--                    <a th:href="@{'/showProduct/'} + ${product.id}">-->
-<!--                        <h3 th:text="${product.name}"></h3>-->
-<!--    &lt;!&ndash;                    <span th:text="${product.price}"></span>&ndash;&gt;-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 </section>
 
