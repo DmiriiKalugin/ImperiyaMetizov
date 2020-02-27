@@ -1,18 +1,24 @@
 package ru.dkalugin.ImperiyaMetizov.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
-import ru.dkalugin.ImperiyaMetizov.services.Sendler;
+import ru.dkalugin.ImperiyaMetizov.services.SendMail;
 
 import javax.mail.MessagingException;
 
 @Controller
 public class FooterController {
-    Sendler sendler = new Sendler();
+    SendMail sendMail;
+
+    @Autowired
+    public void setSendMail(SendMail sendMail) {
+        this.sendMail = sendMail;
+    }
 
     @GetMapping("/privacy-policy")
     public String privacy_policy(Model model){
@@ -23,7 +29,7 @@ public class FooterController {
     @PostMapping("/footer")
     public String index(@ModelAttribute FormFooter formFooter, Model model) throws MessagingException {
         model.addAttribute("greeting", formFooter);
-        sendler.send(formFooter.getName(), formFooter.getNumber(), formFooter.getContent());
+        sendMail.send(formFooter.getName(), formFooter.getNumber(), formFooter.getContent());
         return "index";
     }
 
