@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
     <div th:replace="~{head_modules::head}"></div>
     <div th:replace="~{js_modules :: js}"/>
 </head>
@@ -30,18 +31,75 @@
         </div>
         <div class="row featured isotope" >
             <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item"th:each="product : ${product}">
+
+
                 <div class="product-item">
                     <img th:each="subcategory : ${subcategory}" th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="200" height="200" alt="">
                     <h3> Наименование: </h3>
                     <h3 th:text="${product.name}"></h3>
                     <h3> Цена: </h3>
                     <h3 th:text="${product.price}"></h3>
-                    <button><a href="#">Заказать</a></button>
+                    <div onclick="overlayFunction(event)" class="overlay1"></div>
+                    <div class="container1">
+                        <div class="wrapper1">
+                            <button onclick="buttonFunction(event)" class="button1">Заказать</button>
+                            <div class="modal1">
+                                <form  th:action="@{/footer}" th:object="${greeting}" method="post" class="contact-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
+                                                <input type="text" class="form-control" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" placeholder="Name error">
+                                            </div>
+                                        </div>
+                                    </div><div class="row">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <input type="email" class="form-control" th:field="*{email}" placeholder="Ваше email">
+                                            <input type="email" class="form-control" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"placeholder="email error">
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" th:field="*{number}" placeholder="Ваш номер">
+                                            </div>
+                                            <div th:if="${#fields.hasErrors('number')}" th:errors="*{number}">
+                                                Number error
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                                            </div>
+                                            <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+                                                Number error
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="input-group">
+                                                <input type="submit" class="contact-submit" value="Отправить" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <p onclick="overlayFunction(event)" class="close1">Close</p>
+                                <script type="text/javascript" src="/js/form.js"></script>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
+
 
 <div th:replace="~{footer_modules :: footer}"></div>
 

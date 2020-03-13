@@ -11,6 +11,7 @@ import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
 import ru.dkalugin.ImperiyaMetizov.entities.Product;
 import ru.dkalugin.ImperiyaMetizov.services.ProductServices;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -25,11 +26,11 @@ public class IndexController {
 
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(FormFooter formFooter, Model model) {
         List<Category> allCategory = categoryServices.getAllCategory();
 
         model.addAttribute("category", allCategory);
-        model.addAttribute("greeting", new FormFooter());
+        model.addAttribute("greeting",formFooter);
         return "index";
     }
 
