@@ -11,6 +11,7 @@ import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
 import ru.dkalugin.ImperiyaMetizov.entities.Product;
 import ru.dkalugin.ImperiyaMetizov.services.ProductServices;
 import ru.dkalugin.ImperiyaMetizov.services.SubcategoryServices;
+import ru.dkalugin.ImperiyaMetizov.utils.Cart;
 
 import java.util.List;
 
@@ -19,6 +20,12 @@ public class CatalogController {
     private ProductServices productService;
     private CategoryServices categoryServices;
     private SubcategoryServices subcategoryServices;
+    private Cart cart;
+
+    @Autowired
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 
     @Autowired
     public void setProductService(ProductServices productService) {
@@ -38,7 +45,7 @@ public class CatalogController {
     @GetMapping("/catalog")
     public String catalog(Model model) {
         List<Category> allCategory = categoryServices.getAllCategory();
-
+        model.addAttribute("cart", cart.getProductList());
         model.addAttribute("category", allCategory);
         model.addAttribute("greeting", new FormFooter());
         return "catalog";
@@ -47,6 +54,7 @@ public class CatalogController {
     @GetMapping("/subcategory")
     public String Subcategory(Model model){
         model.addAttribute("subcategory", subcategoryServices.getSubcategory());
+        model.addAttribute("cart", cart.getProductList());
         model.addAttribute("greeting", new FormFooter());
         return "subcategory";
     }
@@ -54,6 +62,7 @@ public class CatalogController {
     @GetMapping("/showSubcategory/{id}")
     public String showSubcategory(Model model, @PathVariable("id") long id){
         model.addAttribute("category", categoryServices.getCategoryId(id));
+        model.addAttribute("cart", cart.getProductList());
         model.addAttribute("subcategory", subcategoryServices.findByCategoryId(id));
         model.addAttribute("subcategory_one", subcategoryServices.getCategory_id(id));
         model.addAttribute("greeting", new FormFooter());
@@ -63,6 +72,7 @@ public class CatalogController {
     @GetMapping("/product/{id}/{category_id}")
     public String Product(Model model, @PathVariable("id") long id, @PathVariable("category_id") long category_id){
         model.addAttribute("category", categoryServices.getCategoryId(category_id));
+        model.addAttribute("cart", cart.getProductList());
         model.addAttribute("subcategory", subcategoryServices.getCategory_id(id));
         model.addAttribute("product", productService.getAllBySubcategoryId(id));
         model.addAttribute("greeting", new FormFooter());
@@ -73,6 +83,7 @@ public class CatalogController {
     public String showProduct(Model model, @PathVariable("id") long id, @PathVariable("subcategory_id") long subcategory_id, @PathVariable("category_id") long category_id){
         model.addAttribute("product", productService.getProductById(id));
         model.addAttribute("category", categoryServices.getCategoryId(category_id));
+        model.addAttribute("cart", cart.getProductList());
         model.addAttribute("subcategory", subcategoryServices.getCategory_id(subcategory_id));
         model.addAttribute("greeting", new FormFooter());
         return "showProduct";

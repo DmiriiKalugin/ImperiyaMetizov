@@ -25,7 +25,7 @@ public class Cart {
         this.productServices = productServices;
     }
 
-    List<Product> getProductList(){
+    public List<Product> getProductList(){
         return productList;
     }
 
@@ -37,5 +37,14 @@ public class Cart {
     public void addProductById(long id){
         Product product = productServices.getProductById(id);
         productList.add(product);
+    }
+
+    public void delete(long id){
+       for (int i = 0; i < productList.size(); i++){
+           if (productList.get(i).getId() == id){
+               productList.remove(i);
+               return;
+           }
+       }
     }
 }
