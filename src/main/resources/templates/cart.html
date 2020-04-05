@@ -60,6 +60,30 @@
                 </tr>
             </tbody>
         </table>
+
+        <form th:if="${cart.size() > 0}" th:action="@{/cart/send}" th:object="${form}" method="post">
+            <h1 style="float: center">Оформить заказ</h1>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" th:field="*{email}" placeholder="Контактный email">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" th:field="*{inn}" placeholder="ИНН оганизации">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{nameOrg}" placeholder="Наименование оганизации">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{delivery}" placeholder="Адрес поставки">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" th:field="*{number}" placeholder="Контактный номер телефона">
+            </div>
+
+            <button type="submit" class="btn btn-success">Заказать</button>
+        </form>
     </div>
 </section>
 

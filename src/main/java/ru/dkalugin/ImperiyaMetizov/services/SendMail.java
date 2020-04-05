@@ -1,7 +1,9 @@
 package ru.dkalugin.ImperiyaMetizov.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import ru.dkalugin.ImperiyaMetizov.config.MailConfig;
 
 import java.util.Properties;
 import javax.mail.*;
@@ -15,6 +17,9 @@ import java.util.Properties;
 
 @Service
 public class SendMail {
+
+    @Autowired
+    private MailConfig mailConfig;
 
     String name;
 
@@ -31,18 +36,9 @@ public class SendMail {
         this.content = content;
 
 
-        Properties properties = new Properties();
-        //Хост или IP-адрес почтового сервера
-        properties.put("mail.smtp.host", "smtp.yandex.ru");
-        //Требуется ли аутентификация для отправки сообщения
-        properties.put("mail.smtp.auth", "true");
-        //Порт для установки соединения
-        properties.put("mail.smtp.socketFactory.port", "465");
-//        //Фабрика сокетов, так как при отправке сообщения Yandex требует SSL-соединения
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
         //Создаем соединение для отправки почтового сообщения
-        Session session = Session.getDefaultInstance(properties,
+        Session session = Session.getDefaultInstance(mailConfig.properties(),
                 //Аутентификатор - объект, который передает логин и пароль
                 new Authenticator() {
                     @Override
@@ -56,7 +52,7 @@ public class SendMail {
         //От кого
         message.setFrom(new InternetAddress("imperiya-metizov@yandex.ru"));
         //Кому
-        message.setRecipient(Message.RecipientType.TO, new InternetAddress("imperiya-metizov@yandex.ru"));
+        message.setRecipient(Message.RecipientType.TO, new InternetAddress("sales@imperiya-metizov.ru"));
         //Тема письма
         message.setSubject("Заявка с сайта imperiya-metizov.ru " + name);
         //Текст письма

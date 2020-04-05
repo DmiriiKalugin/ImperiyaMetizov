@@ -5,14 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.dkalugin.ImperiyaMetizov.entities.Category;
-import ru.dkalugin.ImperiyaMetizov.services.CategoryServices;
-import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
-import ru.dkalugin.ImperiyaMetizov.services.ProductServices;
-import ru.dkalugin.ImperiyaMetizov.services.SubcategoryServices;
+import ru.dkalugin.ImperiyaMetizov.services.*;
 import ru.dkalugin.ImperiyaMetizov.utils.Cart;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Controller
@@ -36,6 +35,7 @@ public class CartController {
     @GetMapping("")
     public String cart(Model model){
         model.addAttribute("greeting", new FormFooter());
+        model.addAttribute("form", new FormCart());
         model.addAttribute("cart", cart.getProductList());
         return "cart";
     }
@@ -52,6 +52,15 @@ public class CartController {
         cart.delete(id);
         model.addAttribute("cart", cart.getProductList());
         return "cart";
+    }
+
+    @PostMapping("/send")
+    public String buy(Model model, FormCart formCart) throws MessagingException {
+        model.addAttribute("form", formCart);
+        cart.send(formCart.getName(), formCart.getEmail(), formCart.getNumber(), formCart.getInn(), formCart.getNameOrg(), formCart.getDelivery());
+        model.addAttribute("cart", cart.getProductList());
+        cart.getProductList().clear();
+        return "redirect:/cart";
     }
 
 }
