@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="RU">
+<head>
+    <div th:replace="~{head_modules::head}"></div>
+    <div th:replace="~{js_modules :: js}"/>
+</head>
+<div th:replace="~{header_top_section :: header_top_section}"></div>
+<div th:replace="~{navigation_modules :: navigation(Cart)}"></div>
+<!--<div th:replace="~{development :: development}"></div>-->
+<section class="new-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titie-section wow fadeInDown animated ">
+                    <h1>Корзина</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <ul class="breadcrumbs" >
+                <li><a th:href="@{/}">Главная</a></li>
+                <li>Корзина</li>
+            </ul>
+            <br>
+        </div>
+        <div class="row">
+
+        </div>
+        <span th:if="${cart.size() == 0}">Ваша корзина пуста</span>
+        <table th:if="${cart.size() > 0}" class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Изображение</th>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cart: ${cart}">
+                    <td>
+                        <img th:src="@{/images/} + ${cart.image}" class="img-responsive" width="100" height="100" alt="">
+                    </td>
+                    <td>
+                        <span th:text="${cart.name}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${cart.price}"></span>
+                    </td>
+                    <td>
+                        В наличии <span class="green"> <img src="/images/green.png"></span>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{'/cart/delete/'} + ${cart.id}">удалить</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <form th:if="${cart.size() > 0}" th:action="@{/cart/send}" th:object="${form}" method="post">
+            <h1 style="float: center">Оформить заказ</h1>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" th:field="*{email}" placeholder="Контактный email">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" th:field="*{inn}" placeholder="ИНН оганизации">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{nameOrg}" placeholder="Наименование оганизации">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" th:field="*{delivery}" placeholder="Адрес поставки">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" th:field="*{number}" placeholder="Контактный номер телефона">
+            </div>
+
+            <button type="submit" class="btn btn-success">Заказать</button>
+        </form>
+    </div>
+</section>
+
+<div th:replace="~{footer_modules :: footer}"></div>
+
+
+</html>

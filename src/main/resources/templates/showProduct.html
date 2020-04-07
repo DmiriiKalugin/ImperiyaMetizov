@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
     <div th:replace="~{head_modules::head}"></div>
     <div th:replace="~{js_modules :: js}"/>
 </head>
@@ -28,20 +29,40 @@
             </ul>
             <br>
         </div>
-        <div class="row featured isotope" >
-            <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item"th:each="product : ${product}">
-                <div class="product-item">
-                    <img th:each="subcategory : ${subcategory}" th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="200" height="200" alt="">
-                    <h3> Наименование: </h3>
-                    <h3 th:text="${product.name}"></h3>
-                    <h3> Цена: </h3>
-                    <h3 th:text="${product.price}"></h3>
-                    <button><a href="#">Заказать</a></button>
-                </div>
-            </div>
-        </div>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Изображение</th>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Статус</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${product}">
+                <td>
+                    <img th:each="subcategory : ${subcategory}" th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="100" height="100" alt="">
+                </td>
+                <td>
+                    <span th:text="${product.name}"></span>
+                </td>
+                <td>
+                    <span th:text="${product.price}"></span>
+                </td>
+                <td>
+                    В наличии <span class="green"> <img src="/images/green.png"></span>
+                </td>
+                <td>
+                    <a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}} + ${product.subcategory_id}">В корзину</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </section>
+
+
 
 <div th:replace="~{footer_modules :: footer}"></div>
 

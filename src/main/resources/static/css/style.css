@@ -1575,3 +1575,10 @@ footer.footer p a{
         color: #000 !important;
     }
     /* End Tables Product */
+
+
+.green {
+    position: absolute;
+    margin-left: 16px;
+}
+

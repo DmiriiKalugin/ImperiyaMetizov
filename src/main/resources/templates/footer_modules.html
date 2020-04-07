@@ -19,8 +19,11 @@
                             <div class="contact-info">
                                 <h1>
                                     <p><b>Адрес: </b> Свердловская область, г. Екатеринбург, ул. Бажова, д. 68</p>
-                                    <p><b>Телефон: </b> 8-932-601-5-888</p>
-                                    <p><b>Email: </b> imperiya-metizov@yandex.ru</p>
+                                    <p><b>Телефон: </b> 8-343-206-88-87</p>
+                                    <p><b>Email: </b>  info@imperiya-metizov.ru </p>
+                                    <p><b>Отдел продаж: </b>  sales@imperiya-metizov.ru </p>
+                                    <p><b>Отдел снабжения: </b>  otms@imperiya-metizov.ru </p>
+
                                 </h1>
                             </div>
 <!--                            <div class="social-media">-->
@@ -40,6 +43,14 @@
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
+                                        <input type="text" class="form-control" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" placeholder="Name error">
+                                    </div>
+                                </div>
+                            </div><div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input type="email" class="form-control" th:field="*{email}" placeholder="Ваше email">
+                                        <input type="email" class="form-control" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"placeholder="email error">
                                     </div>
                                 </div>
                             </div>
@@ -48,12 +59,18 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" th:field="*{number}" placeholder="Ваш номер">
                                     </div>
+                                    <div th:if="${#fields.hasErrors('number')}" th:errors="*{number}">
+                                        Number error
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                                    </div>
+                                    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+                                        Number error
                                     </div>
                                 </div>
                             </div>
@@ -78,6 +95,22 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Yandex.Metrika counter -->
+            <script type="text/javascript" >
+               (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+               m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+               (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+               ym(60921514, "init", {
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+               });
+            </script>
+            <noscript><div><img src="https://mc.yandex.ru/watch/60921514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+            <!-- /Yandex.Metrika counter -->
         </footer>
     </div>
 </html>

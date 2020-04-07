@@ -3,6 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <html class="no-js" lang="RU">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
     <div th:replace="~{head_modules::head}"></div>
     <div th:replace="~{js_modules :: js}"/>
 
@@ -21,7 +22,7 @@
         </div>
         <div class="row">
             <br>
-            <ul class="breadcrumbs"  th:each="category: ${category}"  >
+            <ul class="breadcrumbs"  th:each="category: ${category}">
                 <li><a th:href="@{/}">Главная</a></li>
                 <li><a th:href="@{/catalog}">Каталог</a></li>
                 <li ><a th:each="subcategory: ${subcategory}" th:href="@{/showSubcategory/} + ${subcategory.category_id}" th:text="${category.name}"></a></li>
@@ -29,40 +30,39 @@
             </ul>
             <br>
         </div>
-        <table class="table table-hover">
+        <span th:if="${product.size() == 0}">Данный раздел находится на обновлении. Информацию об интересующем товаре, можете уточнить у менеджеров.</span>
+        <table th:if="${product.size() > 0}" class="table table-hover">
             <thead class="thead-dark">
                 <tr>
-                    <th>Название</th>
+                    <th>Изображение</th>
+                    <th>Наименование</th>
                     <th>Цена</th>
-                    <th>&nbsp;</th>
-                    <th>&nbsp;</th>
+                    <th>Статус</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
             <tr th:each="product: ${product}">
                 <td>
-                    <a th:each="category: ${category}" th:href="@{'/showProduct/'} + ${product.id} + @{/} + ${product.subcategory_id} + @{'/'}
-                    + ${category.id}" title="Подробное описание товара" th:text="${product.name}">
-
-                    </a>
+                    <img th:each="subcategory : ${subcategory}" th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="100" height="100" alt="">
+                </td>
+                <td>
+                    <span th:text="${product.name}"></span>
                 </td>
                 <td>
                     <span th:text="${product.price}"></span>
                 </td>
                 <td>
-                    <span>
-                        <span>
-                            <span >Кол-во</span>
-                            <input class="input-count-product" type="text" value="1">
-                        </span>
-                    </span>
+                    В наличии <span class="green"> <img src="/images/green.png"></span>
                 </td>
                 <td>
-                    <a href="#">В корзину</a>
+                    <a class="btn btn-success" th:href="@{'/cart/add/'} + ${product.id} + @{/} + ${subcategory.category_id} + @{/} + ${subcategory.id}">В корзину</a>
                 </td>
             </tr>
             </tbody>
         </table>
+
+
     </div>
 </section>
 
