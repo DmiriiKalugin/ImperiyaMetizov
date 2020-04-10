@@ -1,17 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="catalog_modules">
-      <!-- <div class="row featured isotope" >
-            <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item" th:each="category: ${category}">
-                <div class="product-item" >
-                    <a th:href="@{'/showSubcategory/'} + ${category.id}">
-                        <img th:src="${category.img}" class="img-responsive" width="255" height="322" alt="">
-                        <div class="product-title">
-                            <h3 th:text="${category.name}"></h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-      </div> -->
     <div class="catalog">
         <div class="cards" th:each="category: ${category}">
             <a th:href="@{'/showSubcategory/'} + ${category.id}" class="card wow fadeInUp" data-wow-delay="0.2s">
