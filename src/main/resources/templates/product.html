@@ -31,6 +31,8 @@
             <br>
         </div>
         <span th:if="${product.size() == 0}">Данный раздел находится на обновлении. Информацию об интересующем товаре, можете уточнить у менеджеров.</span>
+
+
         <table th:if="${product.size() > 0}" class="table table-hover">
             <thead class="thead-dark">
                 <tr>

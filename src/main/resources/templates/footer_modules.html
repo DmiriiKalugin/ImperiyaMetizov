@@ -38,29 +38,28 @@
                         </div>
                     </div>
                     <div class="col-md-6 wow fadeInRight animated">
-                        <form  th:action="@{/footer}" th:object="${greeting}" method="post" class="contact-form">
+
+                        <form  th:action="@{/footer}"  th:object="${greeting}" method="POST" class="contact-form" novalidate>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя">
-                                        <input type="text" class="form-control" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" placeholder="Name error">
+                                        <input id="name" type="text" class="form-control" th:field="*{name}" placeholder="Ваше имя *" minlength="2" maxlength="25">
+                                        <span class="error name" aria-live="polite"></span>
                                     </div>
                                 </div>
                             </div><div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="email" class="form-control" th:field="*{email}" placeholder="Ваше email">
-                                        <input type="email" class="form-control" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"placeholder="email error">
+                                        <input id="mail" type="email" class="form-control" th:field="*{email}"  placeholder="Ваше email *">
+                                        <span class="error email" aria-live="polite"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" th:field="*{number}" placeholder="Ваш номер">
-                                    </div>
-                                    <div th:if="${#fields.hasErrors('number')}" th:errors="*{number}">
-                                        Number error
+                                        <input id="number" type="number" class="form-control" th:field="*{number}" placeholder="Ваш номер"  minlength="11" maxlength="11">
+                                        <span class="error number" aria-live="polite"></span>
                                     </div>
                                 </div>
                             </div>
@@ -69,15 +68,12 @@
                                     <div class="input-group">
                                         <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>
                                     </div>
-                                    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
-                                        Number error
-                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">
-                                        <input type="submit" class="contact-submit" value="Отправить" />
+                                        <input id="btn-submit" type="submit" class="contact-submit" value="Отправить" />
                                     </div>
                                 </div>
                             </div>
@@ -112,5 +108,6 @@
             <noscript><div><img src="https://mc.yandex.ru/watch/60921514" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
             <!-- /Yandex.Metrika counter -->
         </footer>
+        <script src="../js/main.js"></script>
     </div>
 </html>

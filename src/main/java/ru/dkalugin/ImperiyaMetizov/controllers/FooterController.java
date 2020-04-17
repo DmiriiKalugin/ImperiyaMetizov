@@ -46,7 +46,7 @@ public class FooterController {
             formFooter.setNumber(null);
             formFooter.setEmail(null);
             formFooter.setContent(null);
-            return "index";
+            return "redirect:/";
 
     }
 
