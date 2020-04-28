@@ -12,6 +12,7 @@ import ru.dkalugin.ImperiyaMetizov.services.*;
 import ru.dkalugin.ImperiyaMetizov.utils.Cart;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -40,7 +41,7 @@ public class CartController {
         return "cart";
     }
 
-    @GetMapping("/add/{id}/{category_id}/{subcategory_id}")
+    @GetMapping("/add/{id}/{category_id}/{subcategory_id}/{count}")
     public String addShowCart(Model model, @PathVariable("id") Long id, @PathVariable("category_id") long category_id, @PathVariable("subcategory_id") Long subcategory_id){
         cart.addProductById(id);
         return "redirect:/product/" + subcategory_id + "/"  + category_id ;
@@ -55,7 +56,7 @@ public class CartController {
     }
 
     @PostMapping("/send")
-    public String buy(Model model, FormCart formCart) throws MessagingException {
+    public String buy(Model model, FormCart formCart) throws MessagingException, IOException {
         model.addAttribute("form", formCart);
         cart.send(formCart.getName(), formCart.getEmail(), formCart.getNumber(), formCart.getInn(), formCart.getNameOrg(), formCart.getDelivery());
         model.addAttribute("cart", cart.getProductList());

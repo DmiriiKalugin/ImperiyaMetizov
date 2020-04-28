@@ -1634,8 +1634,10 @@ footer.footer p a{
 .catalog {
     flex-flow: wrap;
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
+
+
 
 .cards {
     display: flex;
@@ -1685,7 +1687,7 @@ footer.footer p a{
 
 /* end card style */
 
-@media (max-width: 450px) {
+/* @media (max-width: 450px) {
     .cards {
         width: 100%;
     }
@@ -1693,6 +1695,12 @@ footer.footer p a{
     .card-title {
         font-size: 30px;
     }
+} */
+
+
+/* ORDER STYLE */
+.order {
+    display: flex;
+    position: absolute;
 }
-
-
+/* /.ORDER STYLES */

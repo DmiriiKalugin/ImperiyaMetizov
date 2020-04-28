@@ -56,11 +56,5 @@ btnSubmit.addEventListener("click", function (event) {
         event.preventDefault();
     }
 
-    if (!number.validity.valid) {
-        clNumber.innerHTML = "Некорректный номер, номер должен содержать 11 цифр.";
-        error.className = "error active";
-
-        event.preventDefault();
-    }
 } , false);
 

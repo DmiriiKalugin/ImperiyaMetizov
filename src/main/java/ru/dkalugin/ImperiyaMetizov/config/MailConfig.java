@@ -1,23 +1,29 @@
 package ru.dkalugin.ImperiyaMetizov.config;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
 @Component
 public class MailConfig {
-    public Properties properties(){
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
 
-        Properties properties = new Properties();
-        //Хост или IP-адрес почтового сервера
-        properties.put("mail.smtp.host", "smtp.yandex.ru");
-        //Требуется ли аутентификация для отправки сообщения
-        properties.put("mail.smtp.auth", "true");
-        //Порт для установки соединения
-        properties.put("mail.smtp.socketFactory.port", "465");
-//        //Фабрика сокетов, так как при отправке сообщения Yandex требует SSL-соединения
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.put("mail.debug", "true");
-        return properties;
+        mailSender.setUsername(PropertiesMail.MY_EMAIL);
+        mailSender.setPassword(PropertiesMail.MY_PASSWORD);
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "false");
+
+        return mailSender;
     }
 }

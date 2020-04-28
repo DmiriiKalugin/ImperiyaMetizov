@@ -19,6 +19,8 @@ public class Product {
 
     private long subcategory_id;
 
+    private Integer count;
+
     public long getId() {
         return id;
     }
@@ -65,6 +67,14 @@ public class Product {
 
     public void setSubcategory_id(long subcategory_id) {
         this.subcategory_id = subcategory_id;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Product() {
