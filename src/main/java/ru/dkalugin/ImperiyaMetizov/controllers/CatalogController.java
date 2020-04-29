@@ -5,12 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 import ru.dkalugin.ImperiyaMetizov.entities.Category;
-import ru.dkalugin.ImperiyaMetizov.services.CategoryServices;
-import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
+import ru.dkalugin.ImperiyaMetizov.services.*;
 import ru.dkalugin.ImperiyaMetizov.entities.Product;
-import ru.dkalugin.ImperiyaMetizov.services.ProductServices;
-import ru.dkalugin.ImperiyaMetizov.services.SubcategoryServices;
 import ru.dkalugin.ImperiyaMetizov.utils.Cart;
 
 import java.util.List;
@@ -21,6 +19,12 @@ public class CatalogController {
     private CategoryServices categoryServices;
     private SubcategoryServices subcategoryServices;
     private Cart cart;
+    private OrganizationServices organizationServices;
+
+    @Autowired
+    public void setOrganizationServices(OrganizationServices organizationServices) {
+        this.organizationServices = organizationServices;
+    }
 
     @Autowired
     public void setCart(Cart cart) {
@@ -44,6 +48,7 @@ public class CatalogController {
 
     @GetMapping("/catalog")
     public String catalog(Model model) {
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         List<Category> allCategory = categoryServices.getAllCategory();
         model.addAttribute("cart", cart.getProductList());
         model.addAttribute("category", allCategory);
@@ -53,6 +58,7 @@ public class CatalogController {
 
     @GetMapping("/subcategory")
     public String Subcategory(Model model){
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         model.addAttribute("subcategory", subcategoryServices.getSubcategory());
         model.addAttribute("cart", cart.getProductList());
         model.addAttribute("greeting", new FormFooter());
@@ -61,6 +67,7 @@ public class CatalogController {
 
     @GetMapping("/showSubcategory/{id}")
     public String showSubcategory(Model model, @PathVariable("id") long id){
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         model.addAttribute("category", categoryServices.getCategoryId(id));
         model.addAttribute("cart", cart.getProductList());
         model.addAttribute("subcategory", subcategoryServices.findByCategoryId(id));
@@ -71,6 +78,8 @@ public class CatalogController {
 
     @GetMapping("/product/{id}/{category_id}")
     public String Product(Model model, @PathVariable("id") long id, @PathVariable("category_id") long category_id){
+        model.addAttribute("count",new Product());
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         model.addAttribute("category", categoryServices.getCategoryId(category_id));
         model.addAttribute("cart", cart.getProductList());
         model.addAttribute("subcategory", subcategoryServices.getCategory_id(id));
@@ -81,6 +90,7 @@ public class CatalogController {
 
     @GetMapping("/showProduct/{id}/{subcategory_id}/{category_id}")
     public String showProduct(Model model, @PathVariable("id") long id, @PathVariable("subcategory_id") long subcategory_id, @PathVariable("category_id") long category_id){
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         model.addAttribute("product", productService.getProductById(id));
         model.addAttribute("category", categoryServices.getCategoryId(category_id));
         model.addAttribute("cart", cart.getProductList());

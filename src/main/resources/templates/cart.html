@@ -29,36 +29,37 @@
 
         </div>
         <span th:if="${cart.size() == 0}">Ваша корзина пуста</span>
-        <table th:if="${cart.size() > 0}" class="table table-hover">
-            <thead class="thead-dark" >
-            <tr>
-                <th>Наименование</th>
-                <th>Цена</th>
-                <th>Количество</th>
-                <th>Статус</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr th:each="cart: ${cart}">
-                    <td>
-                        <span th:text="${cart.name}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${cart.price}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${cart.count}"></span>
-                    </td>
-                    <td>
-                        В наличии <span class="green"> <img src="/images/green.png"></span>
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" th:href="@{'/cart/delete/'} + ${cart.id} ">удалить</a>
-                    </td>
+<!--        <form th:if="${cart.size() > 0}" th:action="@{/cart/send}" th:object="${form}" method="post" novalidate>-->
+            <table th:if="${cart.size() > 0}" class="table table-hover">
+                <thead class="thead-dark" >
+                <tr>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Статус</th>
+                    <th></th>
                 </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                        <tr th:each="cart: ${cart}">
+                        <td>
+                            <span th:text="${cart.name}"></span>
+                        </td>
+                        <td>
+                            <span th:text="${cart.price}"></span>
+                        </td>
+                        <td >
+                            <span th:text="${cart.count}"></span>
+                        </td>
+                        <td>
+                            В наличии <span class="green"> <img src="/images/green.png"></span>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{'/cart/delete/'} + ${cart.id} ">удалить</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
         <form th:if="${cart.size() > 0}" th:action="@{/cart/send}" th:object="${form}" method="post" novalidate>
             <h1 style="float: center">Оформить заказ</h1>
@@ -103,17 +104,16 @@
         </div>
         <div class="row">
             <div class="col-md-6 wow fadeInLeft animated">
-                <div class="left-content">
+                <div class="left-content" th:each="organization: ${organization}">
                     <h1>Империя Метизов</h1>
-                    <h3>ООО «ОЛИМП ТРЭЙД» - надежный партнёр для Вашего бизнеса.</h3>
+                    <h3><b th:text="${organization.name}"></b> - надежный партнёр для Вашего бизнеса.</h3>
                     <div class="contact-info">
                         <h1>
-                            <p><b>Адрес: </b> Свердловская область, г. Екатеринбург, ул. Бажова, д. 68</p>
-                            <p><b>Телефон: </b> 8-343-206-88-87</p>
-                            <p><b>Email: </b>  info@imperiya-metizov.ru </p>
-                            <p><b>Отдел продаж: </b>  sales@imperiya-metizov.ru </p>
-                            <p><b>Отдел снабжения: </b>  otms@imperiya-metizov.ru </p>
-
+                            <p><b>Адрес: </b> <b th:text="${organization.adres}"></b></p>
+                            <p><b>Телефон: </b> <b th:text="${organization.number}"></b></p>
+                            <p><b>Информационный отдел: </b>  <b th:text="${organization.info}"></b> </p>
+                            <p><b>Отдел продаж: </b> <b th:text="${organization.sales}"></b> </p>
+                            <p><b>Отдел снабжения: </b>  <b th:text="${organization.omts}"></b></p>
                         </h1>
                     </div>
                 </div>
@@ -126,7 +126,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="center">© "ОЛИМП ТРЭЙД" Копирование информации сайта разрешено только с письменного согласия администрации <a th:href="@{/privacy-policy}" target="_blank">Политика конфиденциальности</a>. </p>
+                <p class="center">©  ООО "ИМПЕРИЯ" Копирование информации сайта разрешено только с письменного согласия администрации <a th:href="@{/privacy-policy}" target="_blank">Политика конфиденциальности</a>. </p>
             </div>
         </div>
     </div>

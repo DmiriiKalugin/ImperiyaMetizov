@@ -33,12 +33,15 @@ public class Cart {
     @Autowired
     public JavaMailSender emailSender;
 
+    long id;
+    int count;
     String name ;
     String number;
     String email;
     String inn;
     String nameOrg;
     String delivery;
+
 
     List<Product> productList;
 
@@ -58,17 +61,33 @@ public class Cart {
         productList = new ArrayList<>();
     }
 
-    public void addProductById(long id){
+
+    public void addProductById(long id, Integer count){
         Product product = productServices.getProductById(id);
         for (int i = 0; i < productList.size(); i++){
             if (productList.get(i).getId() == id){
-                productList.get(i).setCount(getProductList().get(i).getCount() + 1);
+                productList.get(i).setCount(getProductList().get(i).getCount() + count);
                 return;
             }
         }
         productList.add(product);
+        for (Product value : productList) {
+            if (value.getId() == id) {
+                value.setCount(count);
+                return;
+            }
+        }
+
     }
 
+    public void updateCount(long id, int count){
+        for (Product product : productList) {
+            if (product.getId() == id) {
+                product.setCount(count);
+                return;
+            }
+        }
+    }
     public void delete(long id){
        for (int i = 0; i < productList.size(); i++){
            if (productList.get(i).getId() == id){
@@ -95,7 +114,7 @@ public class Cart {
 
         List<String> stringList = new ArrayList<>();
 
-        for (int i = 0; i<getProductList().size(); i++){
+        for (int i = 0; i < getProductList().size(); i++){
             stringList.add(i+1 + "." + " - " + getProductList().get(i).getName()
                     + " количество: " + getProductList().get(i).getCount() + " шт.");
         }

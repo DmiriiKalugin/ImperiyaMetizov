@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.dkalugin.ImperiyaMetizov.services.FormFooter;
+import ru.dkalugin.ImperiyaMetizov.services.OrganizationServices;
 import ru.dkalugin.ImperiyaMetizov.services.SendMail;
 import ru.dkalugin.ImperiyaMetizov.utils.Cart;
 
@@ -17,8 +18,13 @@ import javax.validation.Valid;
 @Controller
 public class FooterController {
     SendMail sendMail;
-
     private Cart cart;
+    private OrganizationServices organizationServices;
+
+    @Autowired
+    public void setOrganizationServices(OrganizationServices organizationServices) {
+        this.organizationServices = organizationServices;
+    }
 
     @Autowired
     public void setCart(Cart cart) {
@@ -32,6 +38,7 @@ public class FooterController {
 
     @GetMapping("/privacy-policy")
     public String privacy_policy(Model model){
+        model.addAttribute("organization", organizationServices.getAllOrganization());
         model.addAttribute("greeting", new FormFooter());
         model.addAttribute("cart", cart.getProductList());
         return "privacy_policy";
@@ -39,6 +46,7 @@ public class FooterController {
 
     @PostMapping("/footer")
     public String index(@ModelAttribute @Valid FormFooter formFooter,BindingResult bindingResult, Model model) throws MessagingException {
+            model.addAttribute("organization", organizationServices.getAllOrganization());
             model.addAttribute("greeting", formFooter);
             model.addAttribute("cart", cart.getProductList());
             sendMail.send(formFooter.getName(), formFooter.getNumber(), formFooter.getEmail(), formFooter.getContent());

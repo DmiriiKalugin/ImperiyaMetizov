@@ -24,6 +24,7 @@ public class ProductServices {
         return productRepository.findByCategoryId(subcategory_id);
     }
 
+
     public Product getProductById(Long id){
         return productRepository.findById(id).get();
     }

@@ -28,25 +28,26 @@
             </ul>
             <br>
         </div>
-        <div class="row">
-            <div class="contact-info">
+        <div class="row no-flex" th:each="organization: ${organization}">
+            <div class="contact-info" >
 
                 <h1>
-                    <p><b>Реквизиты: </b></p>
-                    <p><b>ИНН: </b> 7726449374</p>
-                    <p><b>КПП: </b> 772601001</p>
-                    <p><b>ОГРН: </b>  1197746175770 </p>
-                    <p><b>Генеральный директор: </b>  Зинин Вадим Игоревич</p>
+                    <p><b>Реквизиты: </b></p><br>
+                    <p><b th:text="${organization.name}"></b></p>
+                    <p><b>ИНН: </b> <span th:text="${organization.inn}"></span></p>
+                    <p><b>КПП: </b> <span th:text="${organization.kpp}"></span></p>
+                    <p><b>ОГРН: </b>  <span th:text="${organization.ogrn}"></span> </p>
+                    <p><b>Генеральный директор: </b>  <span th:text="${organization.director}"></span></p>
                 </h1>
             </div>
             <div class="contact-info">
 
                 <h1>
-                    <p><b>Адрес: </b> Свердловская область, г. Екатеринбург, ул. Бажова, д. 68</p>
-                    <p><b>Телефон: </b> 8-343-206-88-87</p>
-                    <p><b>Email: </b>  info@imperiya-metizov.ru </p>
-                    <p><b>Отдел продаж: </b>  sales@imperiya-metizov.ru </p>
-                    <p><b>Отдел снабжения: </b>  otms@imperiya-metizov.ru </p>
+                    <p><b>Адрес: </b> <span th:text="${organization.adres}"></span></p>
+                    <p><b>Телефон: </b> <span th:text="${organization.number}"></span></p>
+                    <p><b>Информационный отдел: </b>  <span th:text="${organization.info}"></span> </p>
+                    <p><b>Отдел продаж: </b> <span th:text="${organization.sales}"></span> </p>
+                    <p><b>Отдел снабжения: </b>  <span th:text="${organization.omts}"></span></p>
                 </h1>
             </div>
 

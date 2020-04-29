@@ -8,6 +8,7 @@ import javax.validation.constraints.Size;
 
 @Service
 public class FormCart {
+    public long id;
     @NotNull
     @Size(min = 3, max = 20)
     private String name;
@@ -17,6 +18,23 @@ public class FormCart {
     private String inn;
     private String nameOrg;
     private String delivery;
+    private int count;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public String getName() {
         return name;
