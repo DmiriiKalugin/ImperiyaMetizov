@@ -31,13 +31,9 @@
         </div>
 
         <span th:if="${product.size() == 0}">Данный раздел находится на обновлении. Информацию об интересующем товаре, можете уточнить у менеджеров.</span>
-
-
-
-            <table th:if="${product.size() > 0}" class="table table-hover">
+        <table th:if="${product.size() > 0}" class="table table-hover">
                 <thead class="thead-dark">
                     <tr>
-                        <th>Изображение</th>
                         <th>Наименование</th>
                         <th>Цена</th>
                         <th>Кол-во</th>
@@ -48,9 +44,6 @@
                 <tbody>
                 <tr id="table-list" th:each="product: ${product}">
                     <td>
-                        <img th:each="subcategory : ${subcategory}" th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="100" height="100" alt="">
-                    </td>
-                    <td>
                         <span th:text="${product.name}"></span>
                     </td>
                     <td>
@@ -59,14 +52,15 @@
                     <form th:action="@{'/cart/add/'} + ${product.id} + @{/}
                         + ${subcategory.category_id} + @{/} + ${subcategory.id}"  method="post" novalidate>
                         <td>
-                            <input type="text" th:name="count" value="1" class="numeric-only">
+                            <input type="number" th:name="count" value="1" class="numeric-only">
                         </td>
                         <td>
                             <span class="green"> <img src="/images/green.png"></span>
                         </td>
                         <td >
-                            <button type="submit" class="btn btn-success">В корзину</button>
-<!--                            <a type="submit" id="btn" class="btn btn-success" >В корзину</a>-->
+                            <button type="submit" class="button " id="cart-button">
+                                <img src="../../images/icon container.svg" alt="cart" class="button-icon">
+                            </button>
                         </td>
                     </form>
                 </tr>
@@ -80,7 +74,6 @@
 
 
 <div th:replace="~{footer_modules :: footer}"></div>
-<div th:replace="~{cart_modules :: cart_modules}"/>
+<!--<div th:replace="~{js_modules :: js}"/>-->
 <script src="../../js/main.js"></script>
-<!--<script src="../../js/cart.js"></script>-->
 </html>

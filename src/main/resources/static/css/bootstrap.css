@@ -1398,6 +1398,8 @@ pre code {
     width: 750px;
   }
 }
+
+
 @media (min-width: 992px) {
   .container {
     width: 970px;
@@ -5586,6 +5588,23 @@ button.close {
     width: 300px;
   }
 }
+
+@media (max-width: 768px){
+    .row-footer {
+         display: block;
+    }
+
+    .left-content h1 {
+        font-size: 60px !important;
+     }
+
+    .left-content {
+       width: 85%;
+       margin: -3%;
+    }
+
+}
+
 @media (min-width: 992px) {
   .modal-lg {
     width: 900px;

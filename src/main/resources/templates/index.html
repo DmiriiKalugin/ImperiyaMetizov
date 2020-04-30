@@ -81,27 +81,27 @@
 
         <section class="service-section">
             <div class="container">
-                <div class="row">
+                <div class="row row-footer">
                     <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.1s">
                         <div class="service-item">
                             <i class="pe-7s-box2"></i>
                             <h3> более 2 000 тонн в г. Екатеринбург</h3>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.2s">
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.1s">
                         <div class="service-item">
                             <i class="pe-7s-cash"></i>
                             <h3>Лучшая цена на продукцию в УрФО</h3>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.3s">
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.1s">
                         <div class="service-item">
                             <i class="pe-7s-map-2"></i>
                             <h3>Доставка - по городу и области - своими машинами.
                             </h3>
                             </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.4s">
+                    <div class="col-md-3 col-sm-6 wow fadeInRight animated" data-wow-delay="0.1s">
                         <div class="service-item">
                             <i class="pe-7s-headphones"></i>
                             <h3>ЛИЧНЫЙ МЕНЕДЖЕРДЛЯ РЕШЕНИЯ ВАШИХ ВОПРОСОВ</h3>
@@ -120,6 +120,8 @@
                 </div>
             </div>
 
+<!--            <a th:if="${cart.size() > 0}" class="cart-view" th:href="@{/cart/}"><span class="shoping-cart" th:text="${cart.size()}"></span></a>-->
+
         <div th:replace="~{catalog_modules :: catalog_modules}"></div>
 
         </div>
@@ -128,7 +130,6 @@
 
         <div th:replace="~{footer_modules :: footer}"/>
         <div th:replace="~{js_modules :: js}"/>
-        <div th:replace="~{cart_modules :: cart_modules}"/>
     <script src="../js/main.js"></script>
     </body>
 </html>

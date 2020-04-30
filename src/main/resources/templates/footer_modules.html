@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row row-footer">
                     <div class="col-md-6 wow fadeInLeft animated" >
                         <div class="left-content" th:each="organization: ${organization}">
                             <h1>Империя Метизов</h1>
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 wow fadeInRight animated">
+                    <div class="col-md-6 form-row-footer wow fadeInRight animated">
 
                         <form  th:action="@{/footer}"  th:object="${greeting}" method="POST" class="contact-form" novalidate>
                             <div class="row">
@@ -53,13 +53,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>
-                                    </div>
-                                </div>
-                            </div>
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-12">-->
+<!--                                    <div class="input-group">-->
+<!--                                        <textarea th:field="*{content}" name="content" class="form-control" cols="30" rows="5" placeholder="Сообщение"></textarea>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="input-group">

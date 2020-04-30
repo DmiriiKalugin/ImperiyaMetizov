@@ -4,7 +4,6 @@
 <html class="no-js" lang="RU">
 <head>
     <div th:replace="~{head_modules::head}"></div>
-    <div th:replace="~{js_modules :: js}"/>
 </head>
 <div th:replace="~{header_top_section :: header_top_section}"></div>
 <div th:replace="~{navigation_modules :: navigation(Catalog)}"></div>
@@ -26,21 +25,25 @@
             </ul>
             <br>
         </div>
-        <div class="row featured isotope" >
-            <div class="col-md-3 col-sm-6 col-xs-12 cat-3 featured-items isotope-item"th:each="subcategory: ${subcategory}">
-                <div class="product-item" >
-                    <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'} + ${subcategory.category_id} ">
-                        <img th:src="@{/images/} + ${subcategory.img}" class="img-responsive" width="200" height="200" alt="">
-                        <div class="product-title">
-                            <h3 th:text="${subcategory.name}"></h3>
-                        </div>
-                    </a>
+        <a th:if="${cart.size() > 0}" class="cart-view" th:href="@{/cart/}"><span class="shoping-cart" th:text="${cart.size()}"></span></a>
+
+        <div class="catalog wow fadeInUp" data-wow-delay="0.2s">
+            <div class="product-view-wrap" th:each="subcategory: ${subcategory}">
+                <div class="product-view-item">
+                    <img th:src="@{/images/} + ${subcategory.img}" th:alt="${subcategory.name}">
+                    <div class="product-view-buttons">
+                        <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'} + ${subcategory.category_id}" class="button-view">Подробнее</a>
+                    </div>
+                </div>
+                <div class="product-view-title">
+                    <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'} + ${subcategory.category_id}" th:text="${subcategory.name}"></a>
+                    <!--            <span class="product-view-price">₽ 1999</span>-->
                 </div>
             </div>
         </div>
     </div>
 </section>
 <div th:replace="~{footer_modules :: footer}"></div>
-<div th:replace="~{cart_modules :: cart_modules}"/>
+<div th:replace="~{js_modules :: js}"/>
 <script src="../js/main.js"></script>
 </html>

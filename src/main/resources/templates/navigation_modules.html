@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <div th:fragment="navigation(activeTab)">
+        <a th:if="${cart.size() > 0}" class="cart-view" th:href="@{/cart/}"><span class="shoping-cart" th:text="${cart.size()}"></span></a>
         <header class="header-section">
             <nav class="navbar navbar-default">
                 <div class="container">
@@ -36,13 +37,9 @@
                             <li th:classappend="${activeTab == 'Contact' ? 'active' : ''}">
                                 <a th:href="@{/contact}">Контакты</a>
                             </li>
-                            <ul class="nav navbar-nav navbar-right cart-menu">
-<!--                                <li><a href="#" class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>-->
-                                <li  th:classappend="${activeTab == 'Cart' ? 'active' : ''}">
-                                    <a th:href="@{/cart/}">Корзина<span class="shoping-cart" th:text="${cart.size()}"></span></a>
-                            </li>
-                            </ul>
                         </ul>
+
+
                     </div>
                 </div>
             </nav>

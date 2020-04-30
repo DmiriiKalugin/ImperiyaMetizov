@@ -9,10 +9,7 @@ import javax.validation.constraints.Size;
 @Service
 public class FormCart {
     public long id;
-    @NotNull
-    @Size(min = 3, max = 20)
     private String name;
-    @Email
     private String  email;
     private String number;
     private String inn;

@@ -61,8 +61,9 @@ public class CartController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable("id") Long id){
+    public String delete(Model model, FormCart formCart, @PathVariable("id") Long id){
         model.addAttribute("organization", organizationServices.getAllOrganization());
+        model.addAttribute("form", formCart);
         model.addAttribute("greeting", new FormFooter());
         cart.delete(id);
         model.addAttribute("cart", cart.getProductList());

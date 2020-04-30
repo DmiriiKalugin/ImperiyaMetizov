@@ -1,20 +1,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="catalog_modules">
-    <div class="catalog">
-        <div class="cards" th:each="category: ${category}">
-            <a th:href="@{'/showSubcategory/'} + ${category.id}" class="card wow fadeInUp" data-wow-delay="0.2s">
-                <img th:src="${category.img}" th:alt="${category.name}" class="card-image">
-                <div class="card-text">
-                    <div class="cart-heading">
-                        <h3 class="card-title"  th:text="${category.name}"></h3>
-                    </div>
-                    <!-- /.cart-heading -->
+    <div class="catalog wow fadeInUp" data-wow-delay="0.1s">
+        <div class="product-view-wrap" th:each="category: ${category}" >
+            <div class="product-view-item">
+                <img th:src="${category.img}" th:alt="${category.name}">
+                <div class="product-view-buttons">
+                    <a th:href="@{'/showSubcategory/'} + ${category.id}" class="button-view">Подробнее</a>
                 </div>
-                <!-- /.card-text -->
-            </a>
-            <!-- /.card --> 
+            </div>
+            <div class="product-view-title">
+                <a th:href="@{'/showSubcategory/'} + ${category.id}" th:text="${category.name}"></a>
+    <!--            <span class="product-view-price">₽ 1999</span>-->
+            </div>
         </div>
-        <!-- /.cards -->
     </div>
 </div>
 
