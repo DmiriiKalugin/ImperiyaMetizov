@@ -35,6 +35,7 @@ public class SendMail {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
+        message.setFrom(PropertiesMail.MY_EMAIL);
         message.setTo(PropertiesMail.FRIEND_EMAIL);
         message.setSubject(PropertiesMail.SUBJECT);
         message.setText("Клиент: " + name + "\n" + "телефон: " + number + "\n" + "почта: " + email + "\n" + "сообщение: " + content);

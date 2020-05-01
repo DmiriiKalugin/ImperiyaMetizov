@@ -109,6 +109,7 @@ public class Cart {
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
+        helper.setFrom(PropertiesMail.MY_EMAIL);
         helper.setTo(PropertiesMail.FRIEND_EMAIL);
         helper.setSubject(PropertiesMail.CART_SUBJECT);
 

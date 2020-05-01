@@ -450,7 +450,8 @@ span.shoping-cart:before{
 .cart-view {
     position: fixed;
     width: 158%;
-    top: 22%;
+    top: 30%;
+    left: 10%;
 }
 
 span.shoping-cart {
