@@ -1,0 +1,24 @@
+body {
+    background-image: url(../images/404.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.button {
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #3e8b30;
+    padding: 1%;
+    color: #fff;
+    border-radius: 10px;
+    margin: 8%;
+    box-shadow: 0 3px 10px #000;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background-color: #70d25e;
+    box-shadow: 0 8px 10px #7d7b7b;
+}

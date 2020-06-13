@@ -22,6 +22,16 @@ public class Subcategory {
     @Column(name = "category_id")
     private long category_id;
 
+    private String seo_description;
+
+    public String getSeo_description() {
+        return seo_description;
+    }
+
+    public void setSeo_description(String seo_description) {
+        this.seo_description = seo_description;
+    }
+
     public long getId() {
         return id;
     }

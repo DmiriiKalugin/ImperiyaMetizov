@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Апр 30 2020 г., 18:08
--- Версия сервера: 10.3.22-MariaDB-1:10.3.22+maria~bionic
+-- Время создания: Июн 12 2020 г., 15:09
+-- Версия сервера: 10.3.23-MariaDB-1:10.3.23+maria~bionic-log
 -- Версия PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
