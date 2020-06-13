@@ -30,7 +30,7 @@
         <div class="catalog wow fadeInUp" data-wow-delay="0.2s">
             <div class="product-view-wrap" th:each="subcategory: ${subcategory}">
                 <div class="product-view-item">
-                    <img th:src="@{/images/} + ${subcategory.img}" th:alt="${subcategory.name}">
+                    <img th:src="${subcategory.img}" th:alt="${subcategory.name}">
                     <div class="product-view-buttons">
                         <a th:href="@{'/product/'} + ${subcategory.id}  + @{'/'} + ${subcategory.category_id}" class="button-view">Подробнее</a>
                     </div>
@@ -41,6 +41,8 @@
                 </div>
             </div>
         </div>
+        <h3>Мы производим крепеж различных типов и размеров, из различных видов конструкционных, легированных,
+            и нержавеющих сталей и сплавов: ст.3, ст.35, ст.40, ст.40х, ст.09г2с, 25Х1МФ, 20ХН3А, 20Х13, 12Х18Н10Т, 14Х17Н2, 30ХМА, 10Х17Н13М2Т, а так-же из других сплавов.</h3>
     </div>
 </section>
 <div th:replace="~{footer_modules :: footer}"></div>

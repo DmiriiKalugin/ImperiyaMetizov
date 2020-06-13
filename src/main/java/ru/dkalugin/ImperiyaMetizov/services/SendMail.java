@@ -38,7 +38,7 @@ public class SendMail {
         message.setFrom(PropertiesMail.MY_EMAIL);
         message.setTo(PropertiesMail.FRIEND_EMAIL);
         message.setSubject(PropertiesMail.SUBJECT);
-        message.setText("Клиент: " + name + "\n" + "телефон: " + number + "\n" + "почта: " + email );
+        message.setText("Клиент: " + name + "\n" + "телефон: " + number + "\n" + "почта: " + email + "\n" + "Сообщение: " + content);
 
         this.emailSender.send(message);
     }

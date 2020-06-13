@@ -29,46 +29,20 @@
             </ul>
             <br>
         </div>
-
-        <span th:if="${product.size() == 0}">Данный раздел находится на обновлении. Информацию об интересующем товаре, можете уточнить у менеджеров.</span>
-        <table th:if="${product.size() > 0}" class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Наименование</th>
-                        <th>Цена</th>
-                        <th>Кол-во</th>
-                        <th>Статус</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr id="table-list" th:each="product: ${product}">
-                    <td>
-                        <span th:text="${product.name}"></span>
-                    </td>
-                    <td>
-                        <span th:text="${product.price}"></span>
-                    </td>
-                    <form th:action="@{'/cart/add/'} + ${product.id} + @{/}
-                        + ${subcategory.category_id} + @{/} + ${subcategory.id}"  method="post" novalidate>
-                        <td>
-                            <input type="number" th:name="count" value="1" class="numeric-only">
-                        </td>
-                        <td>
-                            <span class="green"> <img src="/images/green.png"></span>
-                        </td>
-                        <td >
-                            <button type="submit" class="button " id="cart-button">
-                                <img src="../../images/icon container.svg" alt="cart" class="button-icon">
-                            </button>
-                        </td>
-                    </form>
-                </tr>
-                </tbody>
-            </table>
-
-
-
+        <div class="catalog">
+            <div class="product-view-wrap" th:each="subcategory: ${subcategory}">
+                <div class="product-view-item">
+                    <img th:src="${subcategory.img}" th:alt="${subcategory.name}">
+                </div>
+                <div class="product-view-title">
+                    <a href="#" th:text="${subcategory.name}"></a>
+                    <!--            <span class="product-view-price">₽ 1999</span>-->
+                </div>
+            </div>
+            <span th:text="${subcategory.description}"></span>
+        </div>
+        <h3>Мы производим крепеж различных типов и размеров, из различных видов конструкционных, легированных,
+            и нержавеющих сталей и сплавов: ст.3, ст.35, ст.40, ст.40х, ст.09г2с, 25Х1МФ, 20ХН3А, 20Х13, 12Х18Н10Т, 14Х17Н2, 30ХМА, 10Х17Н13М2Т, а так-же из других сплавов.</h3>
     </div>
 </section>
 

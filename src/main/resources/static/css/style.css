@@ -1646,7 +1646,11 @@ footer.footer p a{
     justify-content: center;
 }
 
-
+.obr {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 5%;
+}
 
 .cards {
     display: flex;
@@ -1709,9 +1713,11 @@ footer.footer p a{
     flex-direction: column;
 }
 
+
 /* product new */
 * {box-sizing: border-box;}
 .product-view-wrap {
+    box-shadow: 0 0 16px 5px;
   border-radius: 7px;
   width: 300px;
   margin: 30px auto;
